@@ -2,6 +2,17 @@ name: Post welcome comment
 on:
   pull_request:
     types: [opened]
+
 permissions:
   pull-requests: write
-  
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          header: welcome
+          message: "👋 ¡Gracias por abrir este Pull Request! El equipo lo revisará pronto."
